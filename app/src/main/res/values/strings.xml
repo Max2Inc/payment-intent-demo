@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">payment-intent-demo</string>
+    <string name="button_payments_text">Payments</string>
+    <string name="button_transaction_logs_text">Transaction Logs</string>
+</resources>
