@@ -21,5 +21,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_transaction_logs_text" />
+
+        <Button
+            android:id="@+id/btnReversal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:text="@string/button_open_transaction_log_for_reversal" />
+
+        <Button
+            android:id="@+id/btnRefund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/button_open_transaction_log_for_refund" />
+
     </LinearLayout>
 </RelativeLayout>
