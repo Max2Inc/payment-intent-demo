@@ -15,14 +15,12 @@ public class VeeaConnectBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent != null && intent.getExtras() != null) {
-            if (intent.getExtras().containsKey(KEY_RECEIPT)) {
-                App.getInstance().getEventBus().post(new CarrierEvent<>(
-                        TransactionStatusDetails.Status.fromInt(intent.getIntExtra(KEY_STATUS,
-                                TransactionStatusDetails.Status.AUTHORIZE_FAILED.intVal())),
-                        App.getInstance().getGson().fromJson(
-                                intent.getStringExtra(KEY_RECEIPT), Receipt.class)
-                ));
-            }
+            App.getInstance().getEventBus().post(new CarrierEvent<>(
+                    TransactionStatusDetails.Status.fromInt(intent.getIntExtra(KEY_STATUS,
+                            TransactionStatusDetails.Status.AUTHORIZE_FAILED.intVal())),
+                    intent.getExtras().containsKey(KEY_RECEIPT) ? App.getInstance().getGson().fromJson(
+                            intent.getStringExtra(KEY_RECEIPT), Receipt.class) : null
+            ));
         }
     }
 }

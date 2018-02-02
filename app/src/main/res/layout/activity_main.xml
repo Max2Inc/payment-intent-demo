@@ -22,19 +22,44 @@
             android:layout_height="wrap_content"
             android:text="@string/button_transaction_logs_text" />
 
-        <Button
-            android:id="@+id/btnReversal"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="true"
-            android:text="@string/button_open_transaction_log_for_reversal" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnRefund"
+            <EditText
+                android:id="@+id/etReversalTransactionId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/entry_hint_transaction_id"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnReversal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/button_open_transaction_log_for_reversal" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="@string/button_open_transaction_log_for_refund" />
+            android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/etRefundTransactionId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/entry_hint_transaction_id"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnRefund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/button_open_transaction_log_for_refund" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

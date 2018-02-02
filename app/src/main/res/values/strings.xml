@@ -4,4 +4,6 @@
     <string name="button_transaction_logs_text">Transaction Logs</string>
     <string name="button_open_transaction_log_for_reversal">Reversal</string>
     <string name="button_open_transaction_log_for_refund">Refund</string>
+
+    <string name="entry_hint_transaction_id">Transaction ID</string>
 </resources>
