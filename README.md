@@ -4,4 +4,4 @@ IF you are looking for a way to seamlessly integrate a payment checkout to your 
 
 This repository will contain sample code for all the integrations. 
 
-Check our the [wiki](https://github.com/Max2Inc/payment-intent-demo/wiki/Intents) for the documentation.
+Check our the [wiki](https://github.com/Max2Inc/payment-intent-demo/wiki/) for the documentation.
