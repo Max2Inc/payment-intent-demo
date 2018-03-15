@@ -1,9 +1,11 @@
-<resources>
-    <string name="app_name">payment-intent-demo</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:override="true">payment-intent-demo</string>
+
     <string name="button_payments_text">Payments</string>
     <string name="button_transaction_logs_text">Transaction Logs</string>
     <string name="button_open_transaction_log_for_reversal">Reversal</string>
     <string name="button_open_transaction_log_for_refund">Refund</string>
+    <string name="button_login">Login</string>
 
     <string name="entry_hint_transaction_id">Transaction ID</string>
 </resources>
