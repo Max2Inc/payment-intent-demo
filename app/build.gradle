@@ -69,6 +69,7 @@ dependencies {
 
     //sdk indirect dependencies (will not be needed once maven-like distribution is established)
 
+    implementation "com.github.greenfrvr:rubber-loader:1.1.2@aar"
     implementation "com.android.support:gridlayout-v7:$supportLibVersion"
     implementation "com.android.support:design:$supportLibVersion"
     implementation "com.android.support:cardview-v7:$supportLibVersion"
