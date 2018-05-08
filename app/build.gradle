@@ -33,7 +33,7 @@ android {
 
     productFlavors {
         internal {
-            buildConfigField 'Boolean', 'DUMMY_PAYMENTS', 'false'
+            buildConfigField 'Boolean', 'DUMMY_PAYMENTS', 'true'
             buildConfigField 'String', 'KICC_IP_ADDRESS', "\"203.233.72.55\""
             buildConfigField 'Integer', 'KICC_TRANSACTION_PORT', '15300'
             buildConfigField "String", "ENDPOINT_URL", "\"http://dev.veea.co/mb/\""
@@ -69,6 +69,8 @@ dependencies {
 
     //sdk indirect dependencies (will not be needed once maven-like distribution is established)
 
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.5.2@aar'
+    implementation "org.threeten:threetenbp:1.3.3"
     implementation "com.github.greenfrvr:rubber-loader:1.1.2@aar"
     implementation "com.android.support:gridlayout-v7:$supportLibVersion"
     implementation "com.android.support:design:$supportLibVersion"
