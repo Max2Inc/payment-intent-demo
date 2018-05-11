@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppDemoTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".AlternativeActivity">
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.AlternativeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,9 +19,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".VeeaConnectBroadcastReceiver">
+        <receiver android:name=".receivers.PaymentsBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.test.action.hello.World" />
+                <action android:name="com.max2.veeaconnect.Payments" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.AuthenticationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.max2.veeaconnect.Authentication" />
             </intent-filter>
         </receiver>
     </application>

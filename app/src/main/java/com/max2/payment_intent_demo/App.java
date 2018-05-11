@@ -28,11 +28,11 @@ public class App extends Application {
         Max2SdkInternal.builder(this)
                 .subscribeOnScheduler(Schedulers.io())
                 .observeOnScheduler(AndroidSchedulers.mainThread())
-                .baseUrl(BuildConfig.ENDPOINT_URL) //provided by Max2
+                .baseUrl(BuildConfig.ENDPOINT_URL) //provided by Veea
                 .debug(BuildConfig.DEBUG)
-                .kiccIpAddress(BuildConfig.KICC_IP_ADDRESS) //provided by Max2
-                .kiccPort(BuildConfig.KICC_TRANSACTION_PORT) //provided by Max2
-                .dummyPayments(BuildConfig.DUMMY_PAYMENTS)
+                .kiccIpAddress(BuildConfig.KICC_IP_ADDRESS) //provided by Veea
+                .kiccPort(BuildConfig.KICC_TRANSACTION_PORT) //provided by Veea
+                .dummyPayments(BuildConfig.DUMMY_PAYMENTS) //if successful test transactions are needed
                 .init();
     }
 
