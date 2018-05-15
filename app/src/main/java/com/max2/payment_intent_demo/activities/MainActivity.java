@@ -1,4 +1,4 @@
-package com.max2.payment_intent_demo;
+package com.max2.payment_intent_demo.activities;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.max2.payment_intent_demo.events.CarrierEvent;
+import com.max2.payment_intent_demo.App;
+import com.max2.payment_intent_demo.R;
+import com.max2.payment_intent_demo.events.PaymentEvent;
 import com.max2.veeaconnect.sdk.domain.entities.receipt.Receipt;
 import com.squareup.otto.Subscribe;
 
@@ -134,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     @Subscribe
-    public void onReceiptReceived(CarrierEvent<Receipt> carrierEvent) {
-        receivedReceipt = carrierEvent.getData();
+    public void onReceiptReceived(PaymentEvent paymentEvent) {
+        receivedReceipt = paymentEvent.getData();
 
-        Toast.makeText(this, "Received transaction status " + carrierEvent.getStatus().toString(),
+        Toast.makeText(this, "Received transaction status " + paymentEvent.getStatus().toString(),
                 Toast.LENGTH_LONG).show();
 
         if (receivedReceipt != null) {

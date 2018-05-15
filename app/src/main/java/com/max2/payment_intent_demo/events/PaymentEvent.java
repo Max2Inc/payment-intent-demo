@@ -1,21 +1,22 @@
 package com.max2.payment_intent_demo.events;
 
 import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
+import com.max2.veeaconnect.sdk.domain.entities.receipt.Receipt;
 
-public class CarrierEvent<T> {
+public class PaymentEvent {
     private final TransactionStatusDetails.Status status;
-    private final T data;
+    private final Receipt receipt;
 
-    public CarrierEvent(TransactionStatusDetails.Status status, T data) {
+    public PaymentEvent(TransactionStatusDetails.Status status, Receipt receipt) {
         this.status = status;
-        this.data = data;
+        this.receipt = receipt;
     }
 
     public TransactionStatusDetails.Status getStatus() {
         return status;
     }
 
-    public T getData() {
-        return data;
+    public Receipt getData() {
+        return receipt;
     }
 }
