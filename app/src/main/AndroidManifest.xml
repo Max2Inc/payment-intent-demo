@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppDemoTheme">
+
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.AlternativeActivity">
             <intent-filter>
@@ -27,6 +28,11 @@
         <receiver android:name=".receivers.AuthenticationBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.max2.veeaconnect.Authentication" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.ChangePasscodeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.max2.veeaconnect.PasscodeManagement" />
             </intent-filter>
         </receiver>
     </application>

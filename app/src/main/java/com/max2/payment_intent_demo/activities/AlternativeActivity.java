@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.max2.payment_intent_demo.App;
 import com.max2.payment_intent_demo.R;
 import com.max2.payment_intent_demo.events.AuthenticationEvent;
+import com.max2.payment_intent_demo.events.ChangePasscodeEvent;
 import com.max2.payment_intent_demo.events.PaymentCancelledEvent;
 import com.max2.payment_intent_demo.events.PaymentEvent;
 import com.max2.veeaconnect.sdk.Max2Sdk;
@@ -46,6 +47,11 @@ public class AlternativeActivity extends AppCompatActivity {
         ).subscribe();
     }
 
+    @OnClick(R.id.btnChangePasscode)
+    protected void onButtonChangePasscodeClick() {
+        Max2Sdk.payments().startChangePasscode().subscribe();
+    }
+
     @SuppressWarnings("unused")
     @Subscribe
     public void onPaymentResultReceived(PaymentEvent event) {
@@ -75,6 +81,16 @@ public class AlternativeActivity extends AppCompatActivity {
             SimpleMaterialDialog.show(this,
                     R.string.payment_result_received_title,
                     R.string.authentication_result_received_success);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    @Subscribe
+    public void onChangePasscodeReceived(ChangePasscodeEvent event) {
+        if (event.hasOperationSucceeded()) {
+            SimpleMaterialDialog.show(this,
+                    R.string.payment_passcode_change_title,
+                    R.string.payment_passcode_change_successful);
         }
     }
 }

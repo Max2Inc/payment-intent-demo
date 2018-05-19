@@ -7,6 +7,7 @@
     <string name="button_open_transaction_log_for_refund">Refund</string>
     <string name="button_login">Login</string>
     <string name="button_payment_entry">Payment Entry</string>
+    <string name="button_payment_change_passcode">Change Passcode</string>
 
     <string name="entry_hint_transaction_id">Transaction ID</string>
 
@@ -15,4 +16,7 @@
     <string name="payment_result_received_failure">Transaction failed.</string>
     <string name="payment_result_received_cancelled">Transaction was cancelled.</string>
     <string name="authentication_result_received_success">Authentication was successful.</string>
+
+    <string name="payment_passcode_change_title">Change Passcode</string>
+    <string name="payment_passcode_change_successful">Change passcode operation succeeded.</string>
 </resources>

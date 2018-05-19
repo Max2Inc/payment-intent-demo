@@ -33,10 +33,10 @@ android {
 
     productFlavors {
         internal {
-            buildConfigField 'Boolean', 'DUMMY_PAYMENTS', 'true'
+            buildConfigField 'Boolean', 'DUMMY_PAYMENTS', 'false'
             buildConfigField 'String', 'KICC_IP_ADDRESS', "\"203.233.72.55\""
             buildConfigField 'Integer', 'KICC_TRANSACTION_PORT', '15300'
-            buildConfigField "String", "ENDPOINT_URL", "\"https://qa.veea.co/mb/\""
+            buildConfigField "String", "ENDPOINT_URL", "\"http://dev.veea.co/mb/\""
         }
     }
 
