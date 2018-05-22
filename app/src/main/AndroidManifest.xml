@@ -35,5 +35,10 @@
                 <action android:name="com.max2.veeaconnect.PasscodeManagement" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receivers.SelectTransactionLogBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.max2.veeaconnect.SelectTransaction" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

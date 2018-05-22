@@ -52,6 +52,11 @@ public class AlternativeActivity extends AppCompatActivity {
         Max2Sdk.payments().startChangePasscode().subscribe();
     }
 
+    @OnClick(R.id.btnSelectTransaction)
+    protected void onButtonSelectTransctionClick() {
+        Max2Sdk.payments().selectTransactionLog().subscribe();
+    }
+
     @SuppressWarnings("unused")
     @Subscribe
     public void onPaymentResultReceived(PaymentEvent event) {

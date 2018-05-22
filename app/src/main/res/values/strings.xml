@@ -8,6 +8,7 @@
     <string name="button_login">Login</string>
     <string name="button_payment_entry">Payment Entry</string>
     <string name="button_payment_change_passcode">Change Passcode</string>
+    <string name="button_payment_select_transaction">Select Transaction</string>
 
     <string name="entry_hint_transaction_id">Transaction ID</string>
 
