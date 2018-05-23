@@ -1,32 +1,27 @@
 package com.max2.payment_intent_demo.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.max2.payment_intent_demo.App;
 import com.max2.payment_intent_demo.R;
-import com.max2.payment_intent_demo.events.AuthenticationEvent;
-import com.max2.payment_intent_demo.events.ChangePasscodeEvent;
-import com.max2.payment_intent_demo.events.PaymentCancelledEvent;
-import com.max2.payment_intent_demo.events.PaymentEvent;
 import com.max2.veeaconnect.sdk.Max2Sdk;
-import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
 import com.max2.veeaconnect.sdk.domain.entities.payments.Ticket;
 import com.max2.veeaconnect.sdk.domain.entities.payments.TicketItem;
 import com.max2.veeaconnect.sdk.ui.common.dialogs.SimpleMaterialDialog;
-import com.squareup.otto.Subscribe;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import nucleus.factory.RequiresPresenter;
+import nucleus.view.NucleusAppCompatActivity;
 
-public class AlternativeActivity extends AppCompatActivity {
+@RequiresPresenter(AlternativeActivityPresenter.class)
+public class AlternativeActivity extends NucleusAppCompatActivity<AlternativeActivityPresenter> {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alternative);
 
         ButterKnife.bind(this);
-        App.getInstance().getEventBus().register(this);
     }
 
     @OnClick(R.id.bntLogin)
@@ -57,45 +52,16 @@ public class AlternativeActivity extends AppCompatActivity {
         Max2Sdk.payments().selectTransactionLog().subscribe();
     }
 
-    @SuppressWarnings("unused")
-    @Subscribe
-    public void onPaymentResultReceived(PaymentEvent event) {
-        if (event.getStatus() == TransactionStatusDetails.Status.AUTHORIZED) {
+    @OnClick(R.id.btnRefundTransaction)
+    protected void onButtonRefundTransactionClick() {
+        if (getPresenter().getTransactionLogToBeRefunded() == null) {
             SimpleMaterialDialog.show(this,
-                    R.string.payment_result_received_title,
-                    R.string.payment_result_received_success);
+                    R.string.payment_result_info,
+                    R.string.payment_select_transaction);
         } else {
-            SimpleMaterialDialog.show(this,
-                    R.string.payment_result_received_title,
-                    R.string.payment_result_received_failure);
-        }
-    }
-
-    @SuppressWarnings("unused")
-    @Subscribe
-    public void onPaymentCancelledReceived(PaymentCancelledEvent event) {
-        SimpleMaterialDialog.show(this,
-                R.string.payment_result_received_title,
-                R.string.payment_result_received_cancelled);
-    }
-
-    @SuppressWarnings("unused")
-    @Subscribe
-    public void onAuthenticationStatusReceived(AuthenticationEvent event) {
-        if (event.isAuthenticated()) {
-            SimpleMaterialDialog.show(this,
-                    R.string.payment_result_received_title,
-                    R.string.authentication_result_received_success);
-        }
-    }
-
-    @SuppressWarnings("unused")
-    @Subscribe
-    public void onChangePasscodeReceived(ChangePasscodeEvent event) {
-        if (event.hasOperationSucceeded()) {
-            SimpleMaterialDialog.show(this,
-                    R.string.payment_passcode_change_title,
-                    R.string.payment_passcode_change_successful);
+            Max2Sdk.payments().startTransactionRefund(
+                    getPresenter().getTransactionLogToBeRefunded(), getPresenter().getLinkedTransactionLogs())
+                    .subscribe();
         }
     }
 }

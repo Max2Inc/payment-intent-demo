@@ -25,6 +25,11 @@
                 <action android:name="com.max2.veeaconnect.Payments" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receivers.RefundBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.max2.veeaconnect.Refund" />
+            </intent-filter>
+        </receiver>
         <receiver android:name=".receivers.AuthenticationBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.max2.veeaconnect.Authentication" />

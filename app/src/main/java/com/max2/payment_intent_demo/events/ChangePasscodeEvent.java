@@ -1,13 +1,7 @@
 package com.max2.payment_intent_demo.events;
 
-public class ChangePasscodeEvent {
-    private final boolean operationSucceeded;
-
+public class ChangePasscodeEvent extends AbstractOperationEvent {
     public ChangePasscodeEvent(boolean operationSucceeded) {
-        this.operationSucceeded = operationSucceeded;
-    }
-
-    public boolean hasOperationSucceeded() {
-        return operationSucceeded;
+        super(operationSucceeded);
     }
 }
