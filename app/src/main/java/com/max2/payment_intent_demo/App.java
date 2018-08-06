@@ -27,6 +27,7 @@ public class App extends Application {
     protected void initMax2Sdk() {
         Max2SdkInternal.builder(this)
                 .subscribeOnScheduler(Schedulers.io())
+                .versionName("1.1.13")
                 .observeOnScheduler(AndroidSchedulers.mainThread())
                 .baseUrl(BuildConfig.ENDPOINT_URL) //provided by Veea
                 .debug(BuildConfig.DEBUG)
