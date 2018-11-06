@@ -1,1 +1,1 @@
-include ':app', ':vc-sdk-android', ':vc-sdk-libucube'
+include ':app', ':vc-sdk-android', ':vc-sdk-libucube', ':vc-sdk-vector'

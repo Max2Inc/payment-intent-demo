@@ -13,6 +13,7 @@ import com.max2.payment_intent_demo.events.SelectTransactionEvent;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionLog;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
 import com.max2.veeaconnect.sdk.ui.common.dialogs.SimpleMaterialDialog;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.AuthenticationRequestSupport;
 import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
@@ -70,6 +71,16 @@ public class AlternativeActivityPresenter extends RxPresenter<AlternativeActivit
                     R.string.payment_result_received_title,
                     R.string.authentication_result_received_success)
             );
+        } else if (event.getExtendedStatus() == AuthenticationRequestSupport.Status.CANCELLED) {
+            deliver(view -> SimpleMaterialDialog.show(view,
+                    R.string.payment_result_received_title,
+                    R.string.authentication_result_received_cancel)
+            );
+        } else {
+            deliver(view -> SimpleMaterialDialog.show(view,
+                    R.string.payment_result_received_title,
+                    R.string.authentication_result_received_fail)
+            );
         }
     }
 
@@ -89,6 +100,12 @@ public class AlternativeActivityPresenter extends RxPresenter<AlternativeActivit
     public void onTransactionSelected(SelectTransactionEvent event) {
         this.transactionLogToBeRefunded = event.getTransactionLog();
         this.linkedTransactionLogs = event.getLinkedTransactionLogs();
+
+        deliver(view -> SimpleMaterialDialog.show(view,
+                view.getString(R.string.payment_transaction_select_title),
+                String.format(view.getString(R.string.payment_transaction_select_message),
+                        transactionLogToBeRefunded.getId()))
+        );
     }
 
     public TransactionLog getTransactionLogToBeRefunded() {

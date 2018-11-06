@@ -1,12 +1,17 @@
 package com.max2.payment_intent_demo.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.max2.payment_intent_demo.R;
+import com.max2.payment_intent_demo.receivers.AuthenticationBroadcastReceiver;
 import com.max2.veeaconnect.sdk.Max2Sdk;
 import com.max2.veeaconnect.sdk.domain.entities.payments.Ticket;
 import com.max2.veeaconnect.sdk.domain.entities.payments.TicketItem;
 import com.max2.veeaconnect.sdk.ui.common.dialogs.SimpleMaterialDialog;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.AuthenticationRequestSupport;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,6 +20,7 @@ import nucleus.view.NucleusAppCompatActivity;
 
 @RequiresPresenter(AlternativeActivityPresenter.class)
 public class AlternativeActivity extends NucleusAppCompatActivity<AlternativeActivityPresenter> {
+    private final BroadcastReceiver authenticationBroadcastReceiver = new AuthenticationBroadcastReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,15 @@ public class AlternativeActivity extends NucleusAppCompatActivity<AlternativeAct
         setContentView(R.layout.activity_alternative);
 
         ButterKnife.bind(this);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(authenticationBroadcastReceiver,
+                new IntentFilter(AuthenticationRequestSupport.ACTION));
+    }
+
+    @Override
+    protected void onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(authenticationBroadcastReceiver);
+        super.onDestroy();
     }
 
     @OnClick(R.id.bntLogin)
@@ -29,12 +44,12 @@ public class AlternativeActivity extends NucleusAppCompatActivity<AlternativeAct
         Max2Sdk.auth().startAuthentication().subscribe();
     }
 
-    @OnClick(R.id.btnPayments)
-    protected void onButtonPaymentsClick() {
-        Max2Sdk.payments().startTicketPayment(
+    @OnClick(R.id.btnPaymentsDirect)
+    protected void onButtonPaymentsDirectClick() {
+        Max2Sdk.payments().startTicketPaymentDirect(
                 new Ticket.TicketBuilder("ticket name")
                         .addTicketItem(new TicketItem.Builder("ticket item name")
-                                .setCost(1.23)
+                                .setCost(0.01)
                                 .setTaxPercentage(8.875)
                                 .setQuantity(1.0)
                                 .createTicketItem())
@@ -61,7 +76,13 @@ public class AlternativeActivity extends NucleusAppCompatActivity<AlternativeAct
         } else {
             Max2Sdk.payments().startTransactionRefund(
                     getPresenter().getTransactionLogToBeRefunded(), getPresenter().getLinkedTransactionLogs())
-                    .subscribe();
+                    .subscribe(() -> {
+                                //does nothing
+                            }, throwable ->
+                                    SimpleMaterialDialog.show(this,
+                                            getString(R.string.payment_result_error),
+                                            throwable.getMessage())
+                    );
         }
     }
 }

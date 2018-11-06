@@ -17,10 +17,10 @@
             android:text="@string/button_login" />
 
         <Button
-            android:id="@+id/btnPayments"
+            android:id="@+id/btnPaymentsDirect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_payment_entry" />
+            android:text="@string/button_payment_direct" />
 
         <Button
             android:id="@+id/btnChangePasscode"

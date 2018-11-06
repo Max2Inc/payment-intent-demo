@@ -1,6 +1,8 @@
 package com.max2.payment_intent_demo;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.google.gson.Gson;
 import com.max2.veeaconnect.sdk.Max2SdkInternal;
@@ -24,10 +26,16 @@ public class App extends Application {
         initMax2Sdk();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
     protected void initMax2Sdk() {
         Max2SdkInternal.builder(this)
                 .subscribeOnScheduler(Schedulers.io())
-                .versionName("1.1.13")
+                .versionName("1.1.14")
                 .observeOnScheduler(AndroidSchedulers.mainThread())
                 .baseUrl(BuildConfig.ENDPOINT_URL) //provided by Veea
                 .debug(BuildConfig.DEBUG)

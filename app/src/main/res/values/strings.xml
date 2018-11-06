@@ -7,6 +7,7 @@
     <string name="button_open_transaction_log_for_refund">Refund</string>
     <string name="button_login">Login</string>
     <string name="button_payment_entry">Payment Entry</string>
+    <string name="button_payment_direct">Payment Direct</string>
     <string name="button_payment_change_passcode">Change Passcode</string>
     <string name="button_payment_select_transaction">Select Transaction</string>
     <string name="button_refund_transaction">Refund Transaction</string>
@@ -14,13 +15,19 @@
     <string name="entry_hint_transaction_id">Transaction ID</string>
 
     <string name="payment_result_info">Info</string>
+    <string name="payment_result_error">Error</string>
     <string name="payment_select_transaction">Please select transaction first.</string>
     <string name="payment_result_received_title">Result Received!</string>
     <string name="payment_result_received_success">Transaction was successful.</string>
     <string name="payment_result_received_failure">Transaction failed.</string>
     <string name="payment_result_received_cancelled">Transaction was cancelled.</string>
     <string name="authentication_result_received_success">Authentication was successful.</string>
+    <string name="authentication_result_received_fail">Authentication failed.</string>
+    <string name="authentication_result_received_cancel">Authentication cancelled.</string>
 
     <string name="payment_passcode_change_title">Change Passcode</string>
     <string name="payment_passcode_change_successful">Change passcode operation succeeded.</string>
+
+    <string name="payment_transaction_select_title">Select Transaction</string>
+    <string name="payment_transaction_select_message">Received transaction with id %d</string>
 </resources>

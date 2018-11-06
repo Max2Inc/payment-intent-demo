@@ -16,14 +16,15 @@ public class AuthenticationBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (intent != null) {
             if (intent.getExtras() != null) {
-                boolean authenticationResult;
+                AuthenticationRequestSupport.Status authenticationResult;
 
                 Log.d(TAG, "Received intent with status " +
-                        (authenticationResult = intent.getBooleanExtra(AuthenticationRequestSupport.KEY_AUTHENTICATION_STATUS, false)));
+                        (authenticationResult = (AuthenticationRequestSupport.Status) intent
+                                .getSerializableExtra(AuthenticationRequestSupport.KEY_AUTHENTICATION_STATUS)));
 
                 App.getInstance().getEventBus().post(new AuthenticationEvent(authenticationResult));
             } else {
-                Log.d(TAG, "Received empty intent");
+                Log.e(TAG, new Throwable("Received empty intent"));
             }
         }
     }
