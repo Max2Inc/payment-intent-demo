@@ -10,7 +10,7 @@ import com.max2.payment_intent_demo.events.PaymentEvent;
 import com.max2.veeaconnect.sdk.domain.Log;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
 import com.max2.veeaconnect.sdk.domain.entities.receipt.Receipt;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.PaymentRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.PaymentRequestSupport;
 
 public class PaymentsBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "PaymentsBroadcastReceiver";

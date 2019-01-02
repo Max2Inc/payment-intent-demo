@@ -13,7 +13,7 @@ import com.max2.payment_intent_demo.events.SelectTransactionEvent;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionLog;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
 import com.max2.veeaconnect.sdk.ui.common.dialogs.SimpleMaterialDialog;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.AuthenticationRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.AuthenticationRequestSupport;
 import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;

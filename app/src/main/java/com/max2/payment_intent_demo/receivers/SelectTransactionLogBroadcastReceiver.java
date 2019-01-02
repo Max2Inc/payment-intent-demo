@@ -9,7 +9,7 @@ import com.max2.payment_intent_demo.App;
 import com.max2.payment_intent_demo.events.SelectTransactionEvent;
 import com.max2.veeaconnect.sdk.domain.Log;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionLog;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.SelectTransactionLogRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.SelectTransactionLogRequestSupport;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.max2.payment_intent_demo.App;
 import com.max2.payment_intent_demo.events.ChangePasscodeEvent;
 import com.max2.veeaconnect.sdk.domain.Log;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.PasscodeManagementRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.PasscodeManagementRequestSupport;
 
 public class ChangePasscodeBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "ChangePasscodeBroadcastReceiver";

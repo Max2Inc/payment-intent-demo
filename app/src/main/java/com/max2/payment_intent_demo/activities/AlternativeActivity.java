@@ -11,7 +11,7 @@ import com.max2.veeaconnect.sdk.Max2Sdk;
 import com.max2.veeaconnect.sdk.domain.entities.payments.Ticket;
 import com.max2.veeaconnect.sdk.domain.entities.payments.TicketItem;
 import com.max2.veeaconnect.sdk.ui.common.dialogs.SimpleMaterialDialog;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.AuthenticationRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.AuthenticationRequestSupport;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

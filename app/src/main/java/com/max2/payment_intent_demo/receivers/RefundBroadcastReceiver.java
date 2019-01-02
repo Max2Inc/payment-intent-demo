@@ -10,7 +10,7 @@ import com.max2.payment_intent_demo.events.PaymentEvent;
 import com.max2.veeaconnect.sdk.domain.Log;
 import com.max2.veeaconnect.sdk.domain.entities.TransactionStatusDetails;
 import com.max2.veeaconnect.sdk.domain.entities.receipt.Receipt;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.PaymentRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.RefundRequestSupport;
 
 public class RefundBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "RefundBroadcastReceiver";
@@ -20,16 +20,16 @@ public class RefundBroadcastReceiver extends BroadcastReceiver {
         if (intent != null) {
             if (intent.getExtras() != null) {
                 Log.d(TAG, "Received intent with status " +
-                        TransactionStatusDetails.Status.fromInt(intent.getIntExtra(PaymentRequestSupport.KEY_TRANSACTION_STATUS,
+                        TransactionStatusDetails.Status.fromInt(intent.getIntExtra(RefundRequestSupport.KEY_TRANSACTION_STATUS,
                                 TransactionStatusDetails.Status.AUTHORIZE_FAILED.intVal())) +
-                        " and receipt " + intent.getStringExtra(PaymentRequestSupport.KEY_TRANSACTION_RECEIPT)
+                        " and receipt " + intent.getStringExtra(RefundRequestSupport.KEY_TRANSACTION_RECEIPT)
                 );
 
                 App.getInstance().getEventBus().post(new PaymentEvent(
-                        TransactionStatusDetails.Status.fromInt(intent.getIntExtra(PaymentRequestSupport.KEY_TRANSACTION_STATUS,
+                        TransactionStatusDetails.Status.fromInt(intent.getIntExtra(RefundRequestSupport.KEY_TRANSACTION_STATUS,
                                 TransactionStatusDetails.Status.AUTHORIZE_FAILED.intVal())),
-                        intent.getExtras().containsKey(PaymentRequestSupport.KEY_TRANSACTION_RECEIPT) ? App.getInstance().getGson().fromJson(
-                                intent.getStringExtra(PaymentRequestSupport.KEY_TRANSACTION_RECEIPT), Receipt.class) : null
+                        intent.getExtras().containsKey(RefundRequestSupport.KEY_TRANSACTION_RECEIPT) ? App.getInstance().getGson().fromJson(
+                                intent.getStringExtra(RefundRequestSupport.KEY_TRANSACTION_RECEIPT), Receipt.class) : null
                 ));
             } else {
                 Log.d(TAG, "Received empty intent");

@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.max2.payment_intent_demo.App;
 import com.max2.payment_intent_demo.events.AuthenticationEvent;
 import com.max2.veeaconnect.sdk.domain.Log;
-import com.max2.veeaconnect.sdk.ui.common.interfaces.AuthenticationRequestSupport;
+import com.max2.veeaconnect.sdk.ui.common.interfaces.sdk.AuthenticationRequestSupport;
 
 public class AuthenticationBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "AuthenticationBroadcastReceiver";
